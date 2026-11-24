@@ -12,6 +12,8 @@ Free. Requires macOS 15 or later, on Apple silicon or Intel.
 3. Go to **System Settings ▸ Privacy & Security**, scroll down, click **Open Anyway** next to Binge Library, and confirm. You only do this once.
 4. In **Settings ▸ Services**, add a free [TMDB API key](https://www.themoviedb.org/settings/api). A [Gemini key](https://aistudio.google.com/apikey) is optional.
 
+Your keys stay in your Mac's Keychain, and your library stays on your Mac.
+
 ![Binge Library showing the Up Next poster grid, with a sidebar of lists and streaming services](docs/screenshots/library.png)
 
 ## Screenshots
@@ -66,36 +68,13 @@ Free. Requires macOS 15 or later, on Apple silicon or Intel.
 
 ---
 
-## Building from source (Mac app)
-
-**Requirements:** macOS 15+, Xcode 16+, and [XcodeGen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen`).
-
-```bash
-git clone https://github.com/LakshyaSingh/binge-library.git
-cd binge-library
-mac/install.sh   # generates the Xcode project, builds a Release copy, installs it into /Applications
-```
-
-On first launch, open **Settings ▸ Services** and add:
-- a **TMDB API key** (required, free): https://www.themoviedb.org/settings/api
-- a **Gemini API key** (optional, free tier): https://aistudio.google.com/apikey. Without one, screenshots are read with Apple's on-device OCR.
-
-Keys are stored in your Keychain. The library is stored in `~/Library/Application Support/Binge Library/`.
-
-To work on the code, run `cd mac && xcodegen generate` and open `BingeLibrary.xcodeproj`. `mac/make-dmg.sh` builds the universal, ad-hoc signed DMG that's published on the Releases page. To build with your own Apple developer account, change `DEVELOPMENT_TEAM` and the bundle ID in `mac/project.yml`.
-
-### Connecting an AI agent
+## Connecting an AI agent
 In **Settings ▸ AI Agents**, turn on "Let AI agents use your library", then click **Copy HTTP Setup** or **Copy Command Setup** and paste the result into your agent's MCP configuration.
 
-## Web version
-
-The first version is a local web app, in `server/` and `web/`.
-
-```bash
-cp .env.example .env   # add your TMDB key (and optionally Gemini)
-npm install
-npm start              # http://localhost:5173
-```
+## For developers
+- **Build and install:** with Xcode 16+ and [XcodeGen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen`), run `mac/install.sh`. To build with your own Apple developer account, change `DEVELOPMENT_TEAM` and the bundle ID in `mac/project.yml`.
+- **Make a release DMG:** run `mac/make-dmg.sh`. It builds a universal, ad-hoc signed DMG into `dist/`.
+- **Web version:** the original Node + React app is in `server/` and `web/`. To run it: `cp .env.example .env`, add your keys, then `npm install && npm start`.
 
 ---
 
