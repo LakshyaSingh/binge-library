@@ -1,0 +1,56 @@
+name: BingeLibrary
+options:
+  bundleIdPrefix: com.lakshyasingh
+  deploymentTarget:
+    macOS: "15.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    DEVELOPMENT_TEAM: B8KZ6ZUW8A
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "Apple Development"
+    ENABLE_HARDENED_RUNTIME: NO
+targets:
+  BingeLibrary:
+    type: application
+    platform: macOS
+    sources: [BingeLibrary]
+    dependencies:
+      # The stdio bridge for MCP agents, copied to Contents/MacOS/binge-mcp.
+      - target: binge-mcp
+        embed: true
+        codeSign: true
+        copy:
+          destination: executables
+    info:
+      path: BingeLibrary/Info.plist
+      properties:
+        CFBundleDisplayName: Binge Library
+        CFBundleName: Binge Library
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        LSApplicationCategoryType: public.app-category.entertainment
+        LSMinimumSystemVersion: "15.0"
+        NSHumanReadableCopyright: "Movie and TV data from TMDB. Streaming availability from JustWatch."
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: Image
+            CFBundleTypeRole: Viewer
+            LSHandlerRank: Alternate
+            LSItemContentTypes: [public.image]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lakshyasingh.BingeLibrary
+        PRODUCT_NAME: Binge Library
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        COMBINE_HIDPI_IMAGES: YES
+  binge-mcp:
+    type: tool
+    platform: macOS
+    sources: [BridgeTool]
+    settings:
+      base:
+        PRODUCT_NAME: binge-mcp
+        PRODUCT_BUNDLE_IDENTIFIER: com.lakshyasingh.BingeLibrary.mcp-bridge
+        SKIP_INSTALL: YES
