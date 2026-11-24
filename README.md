@@ -4,6 +4,24 @@
 
 Built with SwiftUI and SwiftData for macOS 15 and later. The original web version (Node + React) is in this repository too.
 
+![Binge Library showing the Up Next poster grid, with a sidebar of lists and streaming services](docs/screenshots/library.png)
+
+## Screenshots
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/detail.png" alt="Severance detail page with an Open in Apple TV button, watch status and where to watch"><br><b>Title page.</b> “Open in Apple TV” goes straight to the show, not a search.</td>
+    <td width="50%"><img src="docs/screenshots/seasons.png" alt="Show page with Season 1 marked watched and seasons 2 and 3 still to watch"><br><b>Season progress.</b> Season 1 watched, seasons 2–3 still in Up Next.</td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/foryou.png" alt="For You page with recommended posters, each explaining which library titles led to it"><br><b>For You.</b> Recommendations from your whole library, each with the reason.</td>
+    <td width="50%"><img src="docs/screenshots/updates.png" alt="Updates page listing a premiere, new streaming availability and a new season announcement"><br><b>Updates.</b> Every alert is kept, even after you dismiss the notification.</td>
+  </tr>
+  <tr>
+    <td colspan="2"><img src="docs/screenshots/review.png" alt="Year in Review page with viewer personality, hours watched, top genres and services"><br><b>Year in Review.</b> Hours watched, top genres and services, and a shareable card.</td>
+  </tr>
+</table>
+
 ---
 
 ## Features

@@ -119,7 +119,7 @@ struct LibraryView: View {
                 }
                 #endif
                 .onScrollPhaseChange { _, phase in
-                    if ScrollActivity.shared.isScrolling != phase.isScrolling { ScrollActivity.shared.isScrolling = phase.isScrolling }
+                    if !ScrollActivity.noHover, ScrollActivity.shared.isScrolling != phase.isScrolling { ScrollActivity.shared.isScrolling = phase.isScrolling }
                 }
                 .task(id: list.count) {
                     // Warm the cache so posters are already decoded before they scroll into view.
@@ -505,5 +505,11 @@ struct HoverIf: ViewModifier {
 @MainActor @Observable
 final class ScrollActivity {
     static let shared = ScrollActivity()
-    var isScrolling = false
+    var isScrolling = ScrollActivity.noHover
+    /// -BLNoHover YES (debug builds): no hover lift on posters, for clean screenshots whatever the pointer is over.
+    #if DEBUG
+    static let noHover = UserDefaults.standard.bool(forKey: "BLNoHover")
+    #else
+    static let noHover = false
+    #endif
 }

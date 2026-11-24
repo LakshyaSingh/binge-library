@@ -214,7 +214,7 @@ private struct RecommendationCard: View {
             // Outside the card's tap area, so "and N more" can open its own list.
             if showReason { reasonView }
         }
-        .onHover { h in withAnimation(.spring(duration: 0.35, bounce: 0.35)) { hovering = h } }
+        .modifier(HoverIf(on: !ScrollActivity.shared.isScrolling, hovering: $hovering))
         .task(id: rec.id) { await recommender.loadPlatform(for: rec.result, tmdb: model.tmdb) }
         #if DEBUG
         .task {
