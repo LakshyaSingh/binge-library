@@ -4,6 +4,14 @@
 
 Built with SwiftUI and SwiftData for macOS 15 and later. The original web version (Node + React) is in this repository too.
 
+### ⬇️ [Download Binge Library for Mac](https://github.com/LakshyaSingh/binge-library/releases/latest)
+Free. Requires macOS 15 or later, on Apple silicon or Intel.
+
+1. Open the `.dmg` and drag **Binge Library** into **Applications**.
+2. Open it. macOS says it can't verify the app, because the app isn't notarized by Apple. Click **Done**.
+3. Go to **System Settings ▸ Privacy & Security**, scroll down, click **Open Anyway** next to Binge Library, and confirm. You only do this once.
+4. In **Settings ▸ Services**, add a free [TMDB API key](https://www.themoviedb.org/settings/api). A [Gemini key](https://aistudio.google.com/apikey) is optional.
+
 ![Binge Library showing the Up Next poster grid, with a sidebar of lists and streaming services](docs/screenshots/library.png)
 
 ## Screenshots
@@ -58,7 +66,7 @@ Built with SwiftUI and SwiftData for macOS 15 and later. The original web versio
 
 ---
 
-## Getting started (Mac app)
+## Building from source (Mac app)
 
 **Requirements:** macOS 15+, Xcode 16+, and [XcodeGen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen`).
 
@@ -74,7 +82,7 @@ On first launch, open **Settings ▸ Services** and add:
 
 Keys are stored in your Keychain. The library is stored in `~/Library/Application Support/Binge Library/`.
 
-To work on the code, run `cd mac && xcodegen generate` and open `BingeLibrary.xcodeproj`. To build with your own Apple developer account, change `DEVELOPMENT_TEAM` and the bundle ID in `mac/project.yml`.
+To work on the code, run `cd mac && xcodegen generate` and open `BingeLibrary.xcodeproj`. `mac/make-dmg.sh` builds the universal, ad-hoc signed DMG that's published on the Releases page. To build with your own Apple developer account, change `DEVELOPMENT_TEAM` and the bundle ID in `mac/project.yml`.
 
 ### Connecting an AI agent
 In **Settings ▸ AI Agents**, turn on "Let AI agents use your library", then click **Copy HTTP Setup** or **Copy Command Setup** and paste the result into your agent's MCP configuration.
