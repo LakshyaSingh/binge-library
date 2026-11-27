@@ -118,7 +118,7 @@
 
   const hero = gsap.timeline({
     defaults: { ease: "power2.inOut" },
-    scrollTrigger: { trigger: stage, start: "top top", end: "+=170%", pin: true, scrub: 0.6, invalidateOnRefresh: true,
+    scrollTrigger: { trigger: stage, start: "top top", end: "+=320%", pin: true, scrub: 1.2, invalidateOnRefresh: true,
       onUpdate: (st) => postersEl.classList.toggle("gathering", st.progress > 0.04) },
   });
   hero.to("#heroCopy", { y: -90, autoAlpha: 0, filter: "blur(12px)", duration: 0.24, ease: "power1.in" }, 0)
@@ -144,7 +144,7 @@
 
   // ---------- Pitch lights up word by word ----------
   ScrollTrigger.create({
-    trigger: reveal, start: "top 78%", end: "bottom 42%", scrub: true,
+    trigger: ".pitch", start: "center center", end: "+=140%", pin: true, scrub: 1,
     onUpdate: (st) => {
       const n = Math.round(st.progress * wordEls.length);
       wordEls.forEach((w, i) => w.classList.toggle("on", i < n));
@@ -181,7 +181,7 @@
   const ft = gsap.timeline({
     defaults: { ease: "power2.out" },
     scrollTrigger: {
-      trigger: wrap, start: "top top", end: `+=${N * 90}%`, pin: true, scrub: 0.6,
+      trigger: wrap, start: "top top", end: `+=${N * 170}%`, pin: true, scrub: 1.2,
       onUpdate: (st) => { const k = Math.min(N - 1, Math.floor(st.progress * N)); dots.forEach((d, i) => d.classList.toggle("on", i === k)); },
     },
   });

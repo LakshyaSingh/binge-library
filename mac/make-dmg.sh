@@ -1,6 +1,9 @@
 #!/bin/zsh
 # Builds a universal (Apple silicon + Intel) Release copy of Binge Library, signs it ad hoc
-# (no Apple developer certificate), and packages it as dist/Binge-Library-<version>.dmg.
+# (no Apple developer certificate), and packages it as dist/Binge-Library.dmg.
+#
+# Keep that exact file name when uploading to a GitHub release: the website downloads
+# releases/latest/download/Binge-Library.dmg, which always serves the newest release's copy.
 #
 # The app isn't notarized, so on first open people use System Settings ▸ Privacy & Security ▸
 # Open Anyway. Ad-hoc signing keeps your developer certificate (and the email in its name) out
@@ -31,10 +34,10 @@ STAGE=$(mktemp -d)
 cp -R "$APP" "$STAGE/"
 ln -s /Applications "$STAGE/Applications"
 mkdir -p ../dist
-OUT="../dist/Binge-Library-$VERSION.dmg"
+OUT="../dist/Binge-Library.dmg"
 rm -f "$OUT"
 hdiutil create -volname "Binge Library" -srcfolder "$STAGE" -fs HFS+ -format UDZO -imagekey zlib-level=9 -ov "$OUT" >/dev/null
 rm -rf "$STAGE"
 
-echo "Created ${OUT:A}"
+echo "Created ${OUT:A} (version $VERSION)"
 shasum -a 256 "$OUT"

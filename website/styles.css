@@ -84,6 +84,8 @@ h1 { font-size: clamp(36px, 5.6vw, 64px); line-height: 1.06; letter-spacing: -0.
 .rot.is-off { opacity: 0; filter: blur(10px); transform: translateY(-14px); }
 .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 38px; }
 .meta { margin-top: 18px; font-size: 13px; color: #6b6b73; }
+.meta-link { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,0.25); }
+.meta-link:hover { color: var(--text); }
 
 .mac-pos { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; padding-top: 3vh; pointer-events: none; }
 .mac {
