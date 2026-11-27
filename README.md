@@ -4,7 +4,7 @@
 
 Built with SwiftUI and SwiftData for macOS 15 and later. The original web version (Node + React) is in this repository too.
 
-### ⬇️ [Download Binge Library for Mac](https://github.com/LakshyaSingh/binge-library/releases/latest)
+### ⬇️ [Download Binge Library for Mac](https://github.com/LakshyaSingh/binge-library/releases/latest) · [Website](https://binge-library.vercel.app)
 Free. Requires macOS 15 or later, on Apple silicon or Intel.
 
 1. Open the `.dmg` and drag **Binge Library** into **Applications**.

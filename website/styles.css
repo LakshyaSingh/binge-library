@@ -30,6 +30,8 @@ a { color: inherit; text-decoration: none; }
   padding: 14px clamp(16px, 4vw, 36px);
   transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
   border-bottom: 1px solid transparent;
+  /* A soft fade so floating posters never sit right under the links. */
+  background: linear-gradient(180deg, rgba(7, 7, 10, 0.92) 0%, rgba(7, 7, 10, 0.6) 60%, rgba(7, 7, 10, 0) 100%);
 }
 .nav.solid { background: rgba(7, 7, 10, 0.72); backdrop-filter: saturate(1.6) blur(18px); -webkit-backdrop-filter: saturate(1.6) blur(18px); border-color: var(--line); }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; letter-spacing: -0.01em; font-size: 16px; }
