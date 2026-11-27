@@ -123,7 +123,7 @@ h1 { font-size: clamp(36px, 5.6vw, 64px); line-height: 1.06; letter-spacing: -0.
 .steps li.on { height: 22px; background: var(--text); }
 
 /* s1 */
-.shotcard { position: absolute; left: 40px; top: 70px; width: 380px; padding: 14px 16px 18px; border-radius: 16px; background: #101014; border: 1px solid var(--line); box-shadow: 0 30px 80px rgba(0,0,0,0.6); overflow: hidden; }
+.shotcard { position: absolute; z-index: 2; left: 40px; top: 70px; width: 380px; padding: 14px 16px 18px; border-radius: 16px; background: #101014; border: 1px solid var(--line); box-shadow: 0 30px 80px rgba(0,0,0,0.6); overflow: hidden; }
 .shot-top { display: flex; align-items: center; gap: 6px; margin-bottom: 12px; }
 .dot { width: 9px; height: 9px; border-radius: 50%; }
 .dot.r { background: #ff5f57; } .dot.y { background: #febc2e; } .dot.g { background: #28c840; }

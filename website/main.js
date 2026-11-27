@@ -215,6 +215,8 @@
     y: () => drop.offsetTop + drop.offsetHeight / 2 - (shot.offsetTop + shot.offsetHeight / 2),
     scale: 0.8, rotation: -2, duration: 0.24, ease: "power2.inOut",
   }, 0.2)
+    // The drop zone's prompt clears as the screenshot arrives, so it never sits on top of it.
+    .to(["#s1drop svg", "#s1drop span"], { autoAlpha: 0, duration: 0.06, ease: "none" }, 0.3)
     .to(drop, { borderColor: "rgba(59,140,255,0.8)", backgroundColor: "rgba(59,140,255,0.08)", duration: 0.08 }, 0.36)
     .fromTo("#s1scan", { autoAlpha: 0, y: -70 }, { autoAlpha: 1, y: () => shot.offsetHeight, duration: 0.2, ease: "none" }, 0.44)
     .to("#s1scan", { autoAlpha: 0, duration: 0.04 }, 0.64)
