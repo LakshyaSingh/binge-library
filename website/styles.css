@@ -276,9 +276,68 @@ details[open] summary::after { transform: rotate(45deg); }
   .btn:not(.btn-sm) { height: 48px; padding: 0 20px; font-size: 15px; }
   .btn-note { display: none; }
   .rotator { font-size: clamp(18px, 5.4vw, 26px); }
-  .features { display: none; }
-  .features-static { display: block; padding: 0 16px 20px; }
   .pitch { padding: 110px 20px 80px; }
+
+  /* Feature stage, portrait: a 360×560 stage with every scene stacked vertically. */
+  .stage { width: 360px; height: 560px; }
+  .stage-wrap { gap: 18px; justify-content: center; padding-top: 56px; }
+  .captions { font-size: 19px; height: 4.6em; padding: 0 22px; }
+  .caption span { display: block; }
+  .steps { display: none; }
+
+  /* s1: screenshot on top, drop zone below, titles at the bottom */
+  .shotcard { left: 30px; top: 0; width: 300px; padding: 12px 12px 14px; }
+  .shot-row-title { font-size: 13px; }
+  .dropzone { left: 30px; right: auto; top: 250px; width: 300px; height: 170px; font-size: 14px; }
+  .found { bottom: 0; gap: 8px; padding: 0 6px; }
+  .pill { height: 40px; gap: 8px; padding: 0 10px 0 5px; font-size: 12.5px; }
+  .pill img { width: 30px; height: 30px; }
+  .pill .lg { width: 18px; height: 18px; border-radius: 5px; }
+
+  /* s2: posters in two rows, services underneath */
+  .streams { top: 6px; left: 12px; right: 12px; flex-wrap: wrap; gap: 18px 16px; }
+  .sp { width: 98px; }
+  .sp .badge { width: 34px; height: 34px; border-radius: 9px; right: -8px; top: -8px; }
+  .sp figcaption { font-size: 12.5px; margin-top: 6px; }
+  .services { bottom: 10px; gap: 8px; }
+  .services img { width: 34px; height: 34px; border-radius: 9px; }
+
+  /* s3: the page, with the toast below it */
+  .detail { width: 344px; top: 120px; }
+  .toast { bottom: 200px; font-size: 13.5px; padding: 10px 16px 10px 10px; }
+  .toast img { width: 26px; height: 26px; }
+
+  /* s4: poster above the details */
+  .seasons { flex-direction: column; align-items: flex-start; gap: 18px; width: 330px; top: 0; padding: 22px; }
+  .season-poster { width: 118px; }
+  .season-title { font-size: 23px; }
+  .season-meta, .season-note { font-size: 14px; }
+  .chips { margin-top: 16px; }
+  .chip { min-width: 58px; height: 38px; font-size: 15px; }
+  .season-note { margin-top: 12px; }
+  .lists { margin-top: 14px; }
+
+  /* s5: notification above the Updates list */
+  .notif { right: 15px; left: 15px; width: auto; top: 0; padding: 12px; gap: 10px; border-radius: 18px; }
+  .ni { width: 38px; height: 38px; }
+  .nt { font-size: 12.5px; }
+  .np { width: 32px; }
+  .updates { left: 15px; right: 15px; width: auto; bottom: 30px; padding: 14px; }
+  .up-row { font-size: 12.5px; gap: 10px; padding: 9px 4px; }
+  .up-row span { font-size: 11.5px; }
+  .up-row img { width: 30px; }
+
+  /* s6: three narrow cards */
+  .rec { top: 70px; width: 108px; padding: 7px 7px 10px; border-radius: 14px; }
+  .rec img { border-radius: 8px; }
+  .rec b { font-size: 13px; margin-top: 8px; }
+  .rec span { font-size: 10.5px; }
+  .thumb { width: 32px; height: 32px; font-size: 16px; right: 8px; top: 8px; }
+
+  /* s7: chat on top, the library row underneath */
+  .chat { left: 15px; top: 0; width: 330px; gap: 12px; }
+  .bubble { font-size: 15px; padding: 12px 15px; max-width: 290px; }
+  .mini { left: 15px; right: 15px; top: auto; bottom: 10px; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 12px; }
 }
 
 /* ---------- Reduced motion: no pinning, no scrubbing, everything shown plainly ---------- */

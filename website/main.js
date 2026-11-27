@@ -151,9 +151,13 @@
     },
   });
 
-  // ---------- Feature stage (tablet and desktop; phones get the static list) ----------
+  // ---------- Feature stage ----------
+  // The same seven scenes and timeline everywhere. Phones get their own portrait layout
+  // (CSS, under 760px) on a 360×560 stage instead of the 860×500 desktop one shrunk to 40%.
   const mm = gsap.matchMedia();
-  mm.add("(min-width: 760px)", () => {
+  mm.add({ phone: "(max-width: 759px)", wide: "(min-width: 760px)" }, (ctx) => {
+  const PHONE = ctx.conditions.phone;
+  const BW = PHONE ? 360 : 860, BH = PHONE ? 560 : 500;
   const stageEl = $("#stage"), wrap = $("#stageWrap");
   // A sizing box, so the scaled stage takes up its scaled size in the layout.
   let box = stageEl.parentElement;
@@ -167,11 +171,17 @@
   stageEl.style.position = "absolute";
   stageEl.style.left = "0"; stageEl.style.top = "0";
   stageEl.style.transformOrigin = "0 0";
+  // Phones fire resize when the address bar slides in and out; only refit when the width changes.
+  let lastW = 0;
   const fit = () => {
-    const s = Math.min(1, (innerWidth - 32) / 860, (innerHeight - 250) / 500);
+    if (PHONE && innerWidth === lastW) return;
+    lastW = innerWidth;
+    const s = PHONE
+      ? Math.min(1, (innerWidth - 20) / BW, (innerHeight - 190) / BH)
+      : Math.min(1, (innerWidth - 32) / BW, (innerHeight - 250) / BH);
     stageEl.style.transform = `scale(${s})`;
-    box.style.width = 860 * s + "px";
-    box.style.height = 500 * s + "px";
+    box.style.width = BW * s + "px";
+    box.style.height = BH * s + "px";
   };
   fit();
   addEventListener("resize", fit);
@@ -242,7 +252,7 @@
 
   // s6: picks fan in, a thumbs-down swaps one out
   show(5);
-  const recX = [110, 335, 560];
+  const recX = PHONE ? [10, 126, 242] : [110, 335, 560];
   gsap.set(["#s6a", "#s6b", "#s6c", "#s6d"], { left: (i) => recX[Math.min(i, 2) === i ? i : 1] });
   ft.fromTo(["#s6a", "#s6b", "#s6c"], { autoAlpha: 0, y: 60, rotation: (i) => (i - 1) * 9 }, { autoAlpha: 1, y: 0, rotation: (i) => (i - 1) * 3, duration: 0.14, stagger: 0.05, ease: "back.out(1.3)" }, 5.12)
     .fromTo("#s6d", { autoAlpha: 0, y: 70, rotation: 0 }, { autoAlpha: 0, duration: 0.01 }, 5.1)
@@ -256,7 +266,7 @@
     .fromTo("#s7t", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.08 }, 6.26)
     .fromTo("#s7b", { autoAlpha: 0, y: 20, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.1 }, 6.38)
     .fromTo("#s7mini", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.1 }, 6.14)
-    .fromTo("#s7new", { autoAlpha: 0, x: -260, y: 60, scale: 0.6, rotation: -10 }, { autoAlpha: 1, x: 0, y: 0, scale: 1, rotation: 0, duration: 0.2, ease: "power3.out" }, 6.52)
+    .fromTo("#s7new", { autoAlpha: 0, x: PHONE ? -40 : -260, y: PHONE ? -170 : 60, scale: 0.6, rotation: -10 }, { autoAlpha: 1, x: 0, y: 0, scale: 1, rotation: 0, duration: 0.2, ease: "power3.out" }, 6.52)
     .to({}, { duration: 0.3 }, 6.72);
     return () => removeEventListener("resize", fit);
   });
